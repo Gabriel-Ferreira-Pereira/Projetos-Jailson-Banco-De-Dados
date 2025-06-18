@@ -1,0 +1,91 @@
+-- Projeto 01 - Jailson
+
+create database projeto01;
+use projeto01;
+
+desc Alunos;
+
+select * from Alunos;
+
+create table Alunos (
+id int primary key auto_increment,
+nome varchar(100),
+idade int,
+curso varchar(50),
+notaFinal decimal(4,2)
+);
+
+-- Exercícios de INSERT (Create)
+-- 1- Insira três alunos diferentes na tabela Alunos, preenchendo todos os campos, exceto o Id (ele é auto-incremento).
+
+insert into Alunos (nome, idade, curso, notaFinal) values
+("Gabriel Ferreira", 18, "Banco de Dados", 8.3),
+("Robson", 21, "C#", 4.9),
+("Vitor", 25, "Java", 7.6);
+
+-- 2- Insira um aluno chamado "Lucas Silva", de 21 anos, matriculado no curso "Sistemas de Informação", com nota final 8.5.
+
+insert into Alunos (nome, idade, curso, notaFinal) values
+("Lucas Silva", 21, "Sistemas de Informação", 8.5);
+
+-- Exercícios de SELECT (Read)
+-- 3- Liste todos os alunos da tabela Alunos.
+
+select * from Alunos;
+
+-- 4- Liste apenas os nomes e cursos dos alunos com nota final maior ou igual a 7.0.
+
+select nome, curso from Alunos
+where notaFinal >= 7.0;
+
+-- 5- Liste os alunos que têm menos de 20 anos e estão cursando "Análise de Sistemas".
+
+insert into Alunos (nome, idade, curso, notaFinal) values
+("João", 19, "Análise de Sistemas", 5);
+
+select * from Alunos
+where idade < 20 and curso = "Análise de Sistemas";
+
+-- Exercícios de UPDATE (Update)
+-- 6- Atualize a nota final do aluno "Lucas Silva" para 9.0.
+
+update Alunos
+set notaFinal = 9
+where id = 4;
+
+-- 7- Altere o curso de todos os alunos com idade superior a 22 anos para "Engenharia de Software".
+
+update Alunos
+set curso = "Engenharia de Software"
+where idade > 22;
+
+-- Exercícios de DELETE (Delete)
+-- 8- Remova da tabela os alunos que têm nota final menor que 5.0.
+
+delete from Alunos
+where notaFinal < 5;
+
+-- 9- Delete todos os alunos que têm mais de 30 anos.
+
+delete from Alunos
+where idade > 30;
+
+/* Exercício Integrado (CRUD completo)
+10. Faça um exercício completo:
+•	Insira um aluno chamado "Joana Melo", 23 anos, curso "Banco de Dados", nota final 7.8.
+•	Liste todos os alunos do curso "Banco de Dados".
+•	Atualize a nota de Joana Melo para 8.9.
+•	Exclua Joana Melo da tabela. */
+
+insert into Alunos (nome, idade, curso, notaFinal) values
+("Joana Melo", 23, "Banco de Dados", 7.8);
+
+select * from Alunos
+where curso = "Banco de Dados";
+
+update Alunos
+set notaFinal = 8.9
+where id = 6;
+
+delete from Alunos
+where id = 6;
